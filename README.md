@@ -1,7 +1,7 @@
 <div align="center">
   <img src="https://img.icons8.com/?size=100&id=16279&format=png&color=15803D" alt="GovGuide AI Logo" width="80" />
   <h1>🧭 GovGuide AI</h1>
-  <p><strong>One AI Assistant for Every Government Service.</strong></p>
+  <p><strong>Tell us your problem. We'll tell you exactly what to do.</strong></p>
   
   <p>
     <img src="https://img.shields.io/badge/Theme-GovTech%20Green-15803D?style=for-the-badge" alt="Theme" />
@@ -13,7 +13,33 @@
 
 ---
 
-GovGuide AI is an intelligent platform designed to simplify complex government procedures for citizens. By converting dense bureaucratic requirements into simple, actionable steps, it eliminates confusion around document gathering, application procedures, and government services in India.
+## 📖 Overview
+
+GovGuide AI is an intelligent platform designed to simplify complex government procedures for citizens. 
+
+Instead of searching across multiple government websites or reading complicated documentation, users simply describe their situation in plain English (or Hindi!). 
+
+**Example:**
+> *"I lost my Aadhaar card."*
+
+The AI understands the user's intent and instantly generates a complete roadmap containing required documents, official links, application steps, and processing times. The goal is to reduce confusion, save time, and make government services accessible for everyone.
+
+---
+
+## 🎯 Problem & Primary Goal
+
+### The Problem
+Citizens often struggle to access government services because:
+- They don't know which exact service they need.
+- Required documents are difficult to find or understand.
+- Instructions are complicated and spread across different portals.
+- Missing just one document often means visiting the office again.
+
+### The Solution (Our Goal)
+Transform a user's problem into a structured government action plan. Instead of asking *"What documents are required for a Passport?"*, users simply ask: *"I want to study abroad."*
+GovGuide AI will automatically determine they need a Passport, a Police Clearance Certificate, and specific Visa documents, providing a single starting point for their entire journey.
+
+---
 
 ## ✨ Core Features
 
@@ -31,6 +57,16 @@ Don't have an API key? No problem! The app automatically switches to **Demo Mode
 - **Step-by-step Guidance**: Clear instructions on how to apply.
 - **Interactive Checklists**: Keep track of mandatory vs optional documents.
 - **Micro-interactions**: Modal popups for specific document insights and verified official government links.
+
+---
+
+## 👥 Target Users
+
+GovGuide AI is built for everyone, but especially benefits:
+- Students applying for higher education or visas
+- Senior Citizens who struggle with complex portals
+- Working Professionals short on time
+- Rural Citizens navigating bureaucracy for the first time
 
 ---
 
