@@ -3,12 +3,14 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useLanguage } from '@/context/LanguageContext';
 
 import { signOut } from 'next-auth/react';
 
 export default function NavigationLayout({ children, user }: { children: React.ReactNode, user?: any }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const pathname = usePathname();
+  const { t, language, setLanguage } = useLanguage();
 
   return (
     <div className="flex h-screen overflow-hidden bg-[#FAFAF8] text-[#111827] font-sans selection:bg-[#DBEAFE] selection:text-[#2563EB]">
@@ -27,7 +29,7 @@ export default function NavigationLayout({ children, user }: { children: React.R
       >
         <div className="h-16 flex items-center px-6 border-b border-[#E5E7EB] justify-between">
           <Link href="/" className="text-xl font-bold text-[#111827] hover:text-[#2563EB] transition-colors">
-            GovGuide AI
+            {t('home.title')}
           </Link>
           <button className="text-gray-500 hover:text-gray-900 focus:outline-none bg-gray-100 hover:bg-gray-200 p-1.5 rounded-lg transition-colors" onClick={() => setIsSidebarOpen(false)}>
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
@@ -40,7 +42,7 @@ export default function NavigationLayout({ children, user }: { children: React.R
             className={`flex items-center px-4 py-3 rounded-xl font-medium transition-colors ${pathname === '/' ? 'text-[#2563EB] bg-[#EFF6FF]' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'}`}
           >
             <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
-            Home
+            {t('nav.home')}
           </Link>
           <Link
             href="/profile"
@@ -48,7 +50,7 @@ export default function NavigationLayout({ children, user }: { children: React.R
             className={`flex items-center px-4 py-3 rounded-xl font-medium transition-colors ${pathname === '/profile' ? 'text-[#2563EB] bg-[#EFF6FF]' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'}`}
           >
             <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
-            Profile
+            {t('nav.profile')}
           </Link>
           <Link
             href="/settings"
@@ -56,7 +58,7 @@ export default function NavigationLayout({ children, user }: { children: React.R
             className={`flex items-center px-4 py-3 rounded-xl font-medium transition-colors ${pathname === '/settings' ? 'text-[#2563EB] bg-[#EFF6FF]' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'}`}
           >
             <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-            Settings
+            {t('nav.settings')}
           </Link>
         </nav>
         <div className="p-6 border-t border-[#E5E7EB]">
@@ -79,12 +81,12 @@ export default function NavigationLayout({ children, user }: { children: React.R
                 onClick={() => signOut({ callbackUrl: '/' })}
                 className="text-sm text-left font-medium text-red-600 hover:text-red-700 transition-colors w-full"
               >
-                Sign out
+                {t('nav.signout')}
               </button>
             </div>
           ) : (
             <Link href="/login" onClick={() => setIsSidebarOpen(false)} className="w-full flex items-center justify-center space-x-2 bg-[#111827] text-white hover:bg-gray-800 py-3 rounded-xl transition-colors font-bold shadow-sm">
-              Sign In
+              {t('nav.signin')}
             </Link>
           )}
         </div>
@@ -103,17 +105,25 @@ export default function NavigationLayout({ children, user }: { children: React.R
               <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>
             </button>
             <Link href="/" className="ml-4 text-xl font-bold text-[#111827] hover:text-[#2563EB] transition-colors hidden sm:block">
-              GovGuide AI
+              {t('home.title')}
             </Link>
           </div>
 
           <div className="flex items-center space-x-4">
+            <select
+              value={language}
+              onChange={(e) => setLanguage(e.target.value as 'en' | 'hi')}
+              className="bg-gray-50 border border-gray-200 text-gray-700 text-sm rounded-lg block p-2 font-medium cursor-pointer outline-none shadow-sm hidden md:block focus:border-[#2563EB] focus:ring-1 focus:ring-[#2563EB]"
+            >
+              <option value="en">English</option>
+              <option value="hi">हिन्दी</option>
+            </select>
             <Link href="/feedback" className="hidden sm:block text-gray-600 hover:text-[#2563EB] text-sm font-bold transition-colors">
               Feedback
             </Link>
             {!user && (
               <Link href="/login" className="bg-[#2563EB] text-white hover:bg-blue-700 px-5 py-2 rounded-lg text-sm font-bold transition-all shadow-sm">
-                Sign In
+                {t('nav.signin')}
               </Link>
             )}
           </div>

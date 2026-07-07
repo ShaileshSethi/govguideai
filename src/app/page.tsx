@@ -193,10 +193,10 @@ export default function Home() {
             <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-[#111827]">
-            GovGuide AI
+            {t('home.title')}
           </h1>
           <h3 className="text-lg md:text-xl text-muted-foreground font-medium max-w-2xl mx-auto">
-            Describe your problem. We'll tell you exactly what to do.
+            {t('home.subtitle')}
           </h3>
         </div>
       )}
@@ -234,7 +234,7 @@ export default function Home() {
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Specify your problem (e.g. I lost my Aadhaar card...)"
+              placeholder={t('home.placeholder')}
               className="w-full bg-transparent py-4 md:py-5 pl-6 lg:pl-0 pr-4 text-lg text-[#111827] placeholder-gray-400 focus:outline-none rounded-b-3xl md:rounded-r-full md:rounded-bl-none"
               disabled={loading}
             />
@@ -246,7 +246,7 @@ export default function Home() {
               disabled={loading || !query.trim()}
               className="w-full md:w-auto bg-[#2563EB] hover:bg-blue-700 text-white font-bold px-8 py-3.5 md:py-4 rounded-2xl md:rounded-full transition-transform duration-200 active:scale-95 disabled:opacity-60 disabled:active:scale-100 whitespace-nowrap flex items-center justify-center shadow-md"
             >
-              {loading ? 'Analyzing...' : 'Generate Action Plan'}
+              {loading ? '...' : t('home.button')}
             </button>
           </div>
         </form>
@@ -283,7 +283,7 @@ export default function Home() {
       {/* Suggested Questions (Bottom of page when empty) */}
       {!result && !loading && (
         <div className="mt-16 text-center animate-in fade-in duration-1000 delay-150">
-          <p className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-4">Suggested Searches</p>
+          <p className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-4">{t('home.suggestions')}</p>
           <div className="flex flex-wrap gap-3 justify-center">
             {SUGGESTED_QUESTIONS.map((q, idx) => (
               <button
@@ -319,7 +319,7 @@ export default function Home() {
             <div className="flex flex-col md:flex-row md:items-start justify-between mb-4">
               <h2 className="text-2xl font-bold text-[#111827] flex items-center">
                 <span className="bg-card p-2 rounded-xl shadow-sm mr-3">🗺️</span>
-                Action Plan Summary
+                {t('plan.summary')}
               </h2>
             </div>
             <p className="text-lg text-[#1E3A8A] leading-relaxed font-bold">
@@ -329,7 +329,7 @@ export default function Home() {
 
           {/* 2. Government Service Cards */}
           <section>
-            <h3 className="text-xl font-bold text-[#111827] mb-5 border-b border-[#E5E7EB] pb-2">Government Services Required</h3>
+            <h3 className="text-xl font-bold text-[#111827] mb-5 border-b border-[#E5E7EB] pb-2">{t('plan.services')}</h3>
             <div className="space-y-6">
               {result.services.map((service, serviceIdx) => (
                 <div key={serviceIdx} className="bg-card border border-[#E5E7EB] rounded-3xl shadow-sm overflow-hidden transition-all duration-300">
@@ -354,17 +354,17 @@ export default function Home() {
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                         <div className="bg-card p-4 rounded-2xl border border-[#E5E7EB] shadow-sm">
-                          <span className="block text-xs font-bold text-muted-foreground uppercase tracking-wider mb-1">Processing Time</span>
+                          <span className="block text-xs font-bold text-muted-foreground uppercase tracking-wider mb-1">{t('plan.time')}</span>
                           <span className="text-lg font-bold text-[#111827]">{service.processing_time}</span>
                         </div>
                         <div className="bg-card p-4 rounded-2xl border border-[#E5E7EB] shadow-sm">
-                          <span className="block text-xs font-bold text-muted-foreground uppercase tracking-wider mb-1">Estimated Fees</span>
+                          <span className="block text-xs font-bold text-muted-foreground uppercase tracking-wider mb-1">{t('plan.fee')}</span>
                           <span className="text-lg font-bold text-[#111827]">{service.application_fee}</span>
                         </div>
                       </div>
 
                       {/* Document Checklist for this service */}
-                      <h5 className="text-lg font-bold text-[#111827] mb-4">Required Documents</h5>
+                      <h5 className="text-lg font-bold text-[#111827] mb-4">{t('plan.docs')}</h5>
                       <div className="space-y-3 mb-8">
                         {service.required_documents.map((doc, docIdx) => (
                           <div
@@ -402,7 +402,7 @@ export default function Home() {
                       </div>
 
                       {/* Step-by-Step Guide for this service */}
-                      <h5 className="text-lg font-bold text-[#111827] mb-4">Application Steps</h5>
+                      <h5 className="text-lg font-bold text-[#111827] mb-4">{t('plan.steps')}</h5>
                       <div className="bg-card border border-[#E5E7EB] p-6 rounded-2xl shadow-sm mb-6">
                         <div className="relative border-l-2 border-[#E5E7EB] ml-4 space-y-6">
                           {service.application_steps.map((step, idx) => (
@@ -419,11 +419,11 @@ export default function Home() {
                       {/* Official Link */}
                       <div className="flex gap-4">
                         <a href={service.official_apply_link} target="_blank" rel="noopener noreferrer" className="flex-1 text-center bg-[#2563EB] text-white hover:bg-blue-700 font-bold py-3.5 rounded-xl transition-colors shadow-md">
-                          Visit Official Website
+                          {t('plan.visit')}
                         </a>
                         {service.official_information_link && service.official_information_link !== service.official_apply_link && (
                           <a href={service.official_information_link} target="_blank" rel="noopener noreferrer" className="flex-1 text-center bg-card border border-[#E5E7EB] text-foreground hover:bg-muted font-bold py-3.5 rounded-xl transition-colors shadow-sm">
-                            More Information
+                            {t('plan.more_info')}
                           </a>
                         )}
                       </div>
@@ -440,7 +440,7 @@ export default function Home() {
             {result.next_steps && result.next_steps.length > 0 && (
               <div className="bg-card border border-[#E5E7EB] p-8 rounded-3xl shadow-sm">
                 <h3 className="text-lg font-bold text-[#111827] mb-5 flex items-center">
-                  <span className="bg-muted p-1.5 rounded-lg mr-2">🚀</span> Next Steps
+                  <span className="bg-muted p-1.5 rounded-lg mr-2">🚀</span> {t('plan.next')}
                 </h3>
                 <ul className="space-y-4">
                   {result.next_steps.map((step, idx) => (
@@ -456,7 +456,7 @@ export default function Home() {
             {result.tips && result.tips.length > 0 && (
               <div className="bg-[#FFFBEB] border border-[#FDE68A] p-8 rounded-3xl shadow-sm">
                 <h3 className="text-lg font-bold text-[#B45309] mb-5 flex items-center">
-                  <span className="bg-card/50 p-1.5 rounded-lg mr-2">💡</span> Helpful Tips
+                  <span className="bg-card/50 p-1.5 rounded-lg mr-2">💡</span> {t('plan.tips')}
                 </h3>
                 <ul className="space-y-4">
                   {result.tips.map((tip, idx) => (
