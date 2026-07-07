@@ -119,7 +119,7 @@ export default function NavigationLayout({ children, user }: { children: React.R
               <option value="hi">हिन्दी</option>
             </select>
             <Link href="/feedback" className="hidden sm:block text-gray-600 hover:text-[#2563EB] text-sm font-bold transition-colors">
-              Feedback
+              {t('nav.feedback')}
             </Link>
             {!user && (
               <Link href="/login" className="bg-[#2563EB] text-white hover:bg-blue-700 px-5 py-2 rounded-lg text-sm font-bold transition-all shadow-sm">

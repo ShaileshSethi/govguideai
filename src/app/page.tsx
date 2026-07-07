@@ -33,10 +33,10 @@ type ActionPlan = {
 };
 
 const SUGGESTED_QUESTIONS = [
-  { icon: "🛂", text: "Passport Renewal" },
-  { icon: "🪪", text: "PAN Card" },
-  { icon: "🚗", text: "Driving Licence" },
-  { icon: "🔐", text: "Aadhaar Update" }
+  { icon: "🛂", text: 'search.passport' },
+  { icon: "🪪", text: 'search.pan' },
+  { icon: "🚗", text: 'search.driving' },
+  { icon: "🔐", text: 'search.aadhaar' }
 ];
 
 const LOADING_MESSAGES = [
@@ -214,12 +214,12 @@ export default function Home() {
               className="w-full md:w-48 bg-transparent py-4 px-6 text-[#111827] font-bold focus:outline-none appearance-none cursor-pointer rounded-t-3xl md:rounded-l-full md:rounded-tr-none hover:bg-muted transition-colors"
               disabled={loading}
             >
-              <option value="General Issue">General Issue</option>
-              <option value="Identity Documents">Identity Documents</option>
-              <option value="Family & Marriage">Family & Marriage</option>
-              <option value="Vehicles & Transport">Vehicles & Transport</option>
-              <option value="Property & Housing">Property & Housing</option>
-              <option value="Business & Taxes">Business & Taxes</option>
+              <option value="General Issue">{t('cat.general')}</option>
+              <option value="Identity Documents">{t('cat.identity')}</option>
+              <option value="Family & Marriage">{t('cat.family')}</option>
+              <option value="Vehicles & Transport">{t('cat.vehicle')}</option>
+              <option value="Property & Housing">{t('cat.property')}</option>
+              <option value="Business & Taxes">{t('cat.business')}</option>
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-muted-foreground md:hidden">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
@@ -292,7 +292,7 @@ export default function Home() {
                 className="flex items-center space-x-2 bg-card border border-[#E5E7EB] text-[#111827] px-4 py-2 rounded-full text-sm font-medium hover:border-[#2563EB] hover:shadow-sm transition-all duration-200 hover:-translate-y-0.5"
               >
                 <span>{q.icon}</span>
-                <span>{q.text}</span>
+                <span>{t(q.text)}</span>
               </button>
             ))}
           </div>

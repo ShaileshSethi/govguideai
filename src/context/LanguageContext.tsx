@@ -29,7 +29,18 @@ const translations: Record<Language, Translations> = {
     "plan.visit": "Visit Official Website",
     "plan.more_info": "More Information",
     "plan.next": "Next Steps",
-    "plan.tips": "Helpful Tips"
+    "plan.tips": "Helpful Tips",
+    "nav.feedback": "Feedback",
+    "cat.general": "General Issue",
+    "cat.identity": "Identity Documents",
+    "cat.family": "Family & Marriage",
+    "cat.vehicle": "Vehicles & Transport",
+    "cat.property": "Property & Housing",
+    "cat.business": "Business & Taxes",
+    "search.passport": "Passport Renewal",
+    "search.pan": "PAN Card",
+    "search.driving": "Driving Licence",
+    "search.aadhaar": "Aadhaar Update"
   },
   hi: {
     "nav.home": "होम",
@@ -51,7 +62,18 @@ const translations: Record<Language, Translations> = {
     "plan.visit": "आधिकारिक वेबसाइट पर जाएं",
     "plan.more_info": "अधिक जानकारी",
     "plan.next": "अगले कदम",
-    "plan.tips": "उपयोगी टिप्स"
+    "plan.tips": "उपयोगी टिप्स",
+    "nav.feedback": "फीडबैक",
+    "cat.general": "सामान्य समस्या",
+    "cat.identity": "पहचान दस्तावेज़",
+    "cat.family": "परिवार और विवाह",
+    "cat.vehicle": "वाहन और परिवहन",
+    "cat.property": "संपत्ति और आवास",
+    "cat.business": "व्यापार और कर",
+    "search.passport": "पासपोर्ट नवीनीकरण",
+    "search.pan": "पैन कार्ड",
+    "search.driving": "ड्राइविंग लाइसेंस",
+    "search.aadhaar": "आधार अपडेट"
   }
 };
 
