@@ -15,6 +15,7 @@ export const metadata: Metadata = {
 
 import { auth } from "@/auth";
 import { Toaster } from "react-hot-toast";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 export default async function RootLayout({
   children,
@@ -30,10 +31,12 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full font-sans bg-background text-foreground" suppressHydrationWarning>
-        <NavigationLayout user={session?.user}>
-          {children}
-        </NavigationLayout>
-        <Toaster position="bottom-right" />
+        <LanguageProvider>
+          <NavigationLayout user={session?.user}>
+            {children}
+          </NavigationLayout>
+          <Toaster position="bottom-right" />
+        </LanguageProvider>
       </body>
     </html>
   );

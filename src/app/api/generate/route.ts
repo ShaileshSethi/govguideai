@@ -8,7 +8,7 @@ const queryCache = new Map<string, any>();
 
 export async function POST(request: Request) {
   try {
-    const { query } = await request.json();
+    const { query, language } = await request.json();
 
     if (!query) {
       return NextResponse.json({ error: 'Query is required' }, { status: 400 });
@@ -138,11 +138,11 @@ USER QUERY:
 ${query}
 
 INSTRUCTIONS:
-You MUST return a valid JSON object matching this schema exactly. Do NOT wrap the JSON in markdown blocks like \`\`\`json. Just return the raw JSON object.
-
-If the user's query is too vague and you cannot confidently identify the exact government service they need, you MUST ask a follow-up question. Never guess.
-Additionally, if the user asks about a topic completely unrelated to Indian government services (e.g. baking a cake), you MUST ask a follow-up question.
-In these cases, set "isClarificationNeeded" to true, and provide the question/response in "clarificationMessage". Leave the other fields empty or null.
+1. You MUST return a valid JSON object matching this schema exactly. Do NOT wrap the JSON in markdown blocks like \`\`\`json. Just return the raw JSON object.
+2. If the user's query is too vague and you cannot confidently identify the exact government service they need, you MUST ask a follow-up question. Never guess.
+   Additionally, if the user asks about a topic completely unrelated to Indian government services (e.g. baking a cake), you MUST ask a follow-up question.
+   In these cases, set "isClarificationNeeded" to true, and provide the question/response in "clarificationMessage". Leave the other fields empty or null.
+3. Observe the "Language Request" in the USER QUERY. If the language request is "Hindi", you MUST translate all string values in your JSON response (summary, description, steps, tips, etc.) into Hindi. The JSON keys MUST remain in English.
 
 {
   "isClarificationNeeded": boolean,

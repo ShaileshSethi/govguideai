@@ -3,11 +3,12 @@
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { signOut } from 'next-auth/react';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function SettingsPage() {
   const [notifications, setNotifications] = useState(true);
   const [twoFactor, setTwoFactor] = useState(false);
-  const [language, setLanguage] = useState('English');
+  const { language, setLanguage } = useLanguage();
   const [textSize, setTextSize] = useState('Medium');
 
   const handleDownloadData = () => {
@@ -49,8 +50,8 @@ export default function SettingsPage() {
   };
 
   const handleLanguageChange = (lang: string) => {
-    setLanguage(lang);
-    toast.success(`Language set to ${lang}. Translations coming soon.`);
+    setLanguage(lang as 'en' | 'hi');
+    toast.success(`Language set to ${lang === 'hi' ? 'Hindi' : 'English'}`);
   };
 
   return (
@@ -131,9 +132,8 @@ export default function SettingsPage() {
               onChange={(e) => handleLanguageChange(e.target.value)}
               className="bg-background border border-border text-foreground text-sm rounded-xl focus:ring-primary focus:border-primary block p-2 font-medium cursor-pointer outline-none"
             >
-              <option value="English">English</option>
-              <option value="Hindi">Hindi</option>
-              <option value="Tamil">Tamil</option>
+              <option value="en">English</option>
+              <option value="hi">Hindi</option>
             </select>
           </div>
           

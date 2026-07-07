@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import { useLanguage } from '@/context/LanguageContext';
 
 type Document = {
   name: string;
@@ -46,6 +47,7 @@ const LOADING_MESSAGES = [
 ];
 
 export default function Home() {
+  const { language } = useLanguage();
   const [category, setCategory] = useState('General Issue');
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
@@ -83,12 +85,12 @@ export default function Home() {
     setExpandedServices({ 0: true }); // Auto-expand the first service
 
     try {
-      const combinedQuery = `Category: ${category}. Problem: ${searchQuery}`;
+      const combinedQuery = `Language Request: ${language === 'hi' ? 'Hindi' : 'English'}. Category: ${category}. Problem: ${searchQuery}`;
 
       const res = await fetch('/api/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query: combinedQuery }),
+        body: JSON.stringify({ query: combinedQuery, language }),
       });
 
       if (!res.ok) {
